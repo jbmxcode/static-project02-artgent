@@ -3,21 +3,22 @@
 
     .hero {
         position: relative;
-        width: calc(100% - 150px);
-        height: 780px;
+        width: 100%;
+        height: 94vw;
         margin: 0 auto;
 
         &__image {
             display: block;
             width: 100%;
             height: 100%;
+            background-color: rgba($fourth-color, 1);
 
             img {
                 display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                mix-blend-mode: luminosity;
+                mix-blend-mode: luminosity; 
             }
 
             &-caption {
@@ -32,70 +33,137 @@
                     content: "";
                     position: absolute;
                     top: 0;
+                    left: 0;
                     width: 100%;
                     height: 100%;
-                    background-image: url(../images/hero-caption-filter.png);
-                    mix-blend-mode: hard-light;                    
-                    @include bg-cover;
+                    background-color: rgba($primary-color, .7);
                 }
+            }
+        }
 
-                .item {
-                    &-summary {
-                        position: relative;
-                        z-index: 2;
-                        padding-right: 2rem;
+        .item {
+            &-summary {
+                position: relative;
+                z-index: 2;
+                width: 100%;
+                padding-bottom: 3.5rem;
+            }
+
+            &-text {
+                @include flex-all($direction: column, $align: center);
+                font: {
+                    size: 1.5vw;
+                    family: $secondary-font;
+                }
+                text-align: center;
+                color: $color-over-primary;
+
+                span {
+                    display: block;
+                    margin: .5rem 0;
+                    line-height: .75;
+                    letter-spacing: .25rem;
+                    
+                    &:nth-of-type(1) {
+                        margin-left: 1.5rem;
+                        font-size: 3.313em;
+                        letter-spacing: 1.5rem;
                     }
-
-                    &-text {
-                        @include flex-all($direction: column, $align: flex-end);
+                    
+                    &:nth-of-type(2) {
+                        font-size: 8.25em;
+                    }
+                    
+                    &:nth-of-type(3) {
+                        margin-bottom: 0;
+                        font-size: 16.375em;
+                    }
+                    
+                    &:nth-of-type(4) {
                         font: {
-                            size: 1rem;
-                            family: $secondary-font;
+                            size: 1.125rem;
+                            family: $primary-font;
+                            weight: 300;
                         }
-                        text-align: right;
-
-                        span {
-                            display: block;
-                            margin: .5rem 0;
-                            line-height: .75;
-                            
-                            &:nth-of-type(1) {
-                                position: relative;
-                                left: 55px;
-                                font-size: 3.313em;
-                                letter-spacing: 63.28px;
-                            }
-                            
-                            &:nth-of-type(2) {
-                                font-size: 8.25em;
-                            }
-                            
-                            &:nth-of-type(3) {
-                                margin-bottom: 0;
-                                font-size: 16.375em;
-                            }
-                            
-                            &:nth-of-type(4) {
-                                font: {
-                                    size: 1.25rem;
-                                    family: $primary-font;
-                                    weight: 300;
-                                }
-                                letter-spacing: .27rem;
-                            }
-                        }
+                        line-height: 1;
                     }
                 }
             }
         }
     }
+    
+    .action-links-group {
+        position: absolute;
+        z-index: 9;
+        bottom: 2%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-    @include respond-to($vp-mid) {
+    @include respond-to($vp-large) {
+        .hero { 
+            height: 780px; 
+
+            &__image {
+                background-color: transparent; 
+
+                &-caption {
+                    &:before { 
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: {
+                            color: transparent;
+                            image: url(../images/hero-caption-filter.png); 
+                        }
+                        mix-blend-mode: hard-light;                    
+                        @include bg-cover;
+                    }
+                }
+            }
+
+            .item {
+                &-summary { padding-right: 2rem; }
+                
+                &-text { 
+                    align-items: flex-end;
+                    font-size: 1rem; 
+                    text-align: right;
+                    letter-spacing: initial;
+                    color: $c-text;
+
+                    span {
+                        &:nth-of-type(1) {
+                            position: relative;
+                            left: 55px;
+                            margin-left: 0;
+                            letter-spacing: 63.28px;
+                        }
+                        
+                        &:nth-of-type(4) {
+                            letter-spacing: 0.34rem;
+                            line-height: .75;
+                        }
+                    }
+                }
+            }
+        }
+    
         .action-links-group {
-            position: absolute;
-            z-index: 9;
             top: calc(100% - 25px);
+            bottom: 0;
+            left: auto;
             right: 2rem;
+            transform: none;
+        }
+    }
+
+    @include respond-to($vp-max) {
+        .hero { 
+            width: calc(100% - 150px);
+            height: 780px; 
         }
     }
 }

@@ -3,7 +3,7 @@
     padding-bottom: 2rem;
     
     &-section {
-        @include scale-font($small-ratio: .5, $final-size: 1.875rem);
+        @include scale-font($small-ratio: .75, $final-size: 1.875rem);
         font-weight: 300;
         text: {
             align: center;

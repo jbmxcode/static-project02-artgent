@@ -5,10 +5,10 @@ button {
 
 .action-link {
     display: block;
-    width: 250px;
-    padding: .875rem 0;
+    width: 200px;
+    padding: .5rem 0;
     font: {
-        size: 1.5rem;
+        size: 1.125rem;
         family: $tertiary-font;
     }
     text: {
@@ -32,4 +32,10 @@ button {
     }
 
     @include hover-bg-color($c-text, $c-white);
+
+    @include respond-to($vp-mid) {
+        width: 250px;
+        padding: .875rem 0;
+        font-size: 1.5rem;
+    }
 }

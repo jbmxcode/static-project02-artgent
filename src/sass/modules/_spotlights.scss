@@ -1,16 +1,15 @@
 .content-spotlights {
-    padding-top: 25px;
+    padding: 1rem 0;
+    background-color: $primary-color;
 
-    @include mask-fullsize {
-        z-index: -1;
-        height: 355px;
-        background-image: url(../images/wave-spotlights.png);
-        @include bg-cover;
+    .items-list { 
+        @include flex-all($wrap: wrap); 
+        padding: 0 1rem;
     }
 
-    .items-list { @include flex-all($wrap: wrap); }
-
     .item {
+        width: 100%;
+        margin: .5rem 0;
         color: $color-over-primary;
 
         svg {
@@ -24,23 +23,52 @@
     .item-inner { @include flex-all($align: center); }
 
     .item-text {
+        @include flex-all($wrap: wrap);
+        flex: 1;
         font: {
             size: 1.188rem;
             family: $tertiary-font;
         }
         letter-spacing: 2.53px;
 
-        p { margin: 0; }
+        p { margin: 0 .25rem; }
+    }
+
+    @include respond-to($vp-mid) {
+        .items-list {
+            width: 74%;
+            margin: 0 auto;
+        }
     }
 
     @include respond-to($vp-large) {
+        .items-list {
+            width: auto;
+            margin: 0;
+        }
+    }
+
+    @include respond-to($vp-max) {
+        padding: 25px 0 0;
+        background-color: transparent;
+
+        @include mask-fullsize {
+            z-index: -1;
+            height: 355px;
+            background-image: url(../images/wave-spotlights.png);
+            @include bg-cover;
+        }
+
         .content-inner {
             width: calc(100% - 150px);
             margin: 0 auto;
         }
 
+        .items-list { padding: 0; }
+
         .item {
-            margin-right: 45px;
+            width: auto;
+            margin: 0 45px 0 0;
             padding-right: 45px;
             
             @include mask {
@@ -57,6 +85,11 @@
                 padding-right: 0;
 
                 &:before { content: none; }
+            }
+
+            &-text { 
+                display: block;
+                flex: none; 
             }
         }
     }

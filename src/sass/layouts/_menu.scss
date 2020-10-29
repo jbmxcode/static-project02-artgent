@@ -3,16 +3,19 @@
     @include stripped-list;
 
     .menu-item {
-        @include flex-all($align: center);
+        @include flex-all($justify: center, $align: center);
+        flex: 0 1 33.3333%;
         height: 50px;
-        padding: 0 1rem;
+        text-align: center;
 
         a {
+            display: block;
             font: {
                 size: .875rem;
                 weight: 300;
             }
             text: {
+                align: center;
                 transform: uppercase;
                 decoration: none;
             }
@@ -27,7 +30,7 @@
         &:last-child {
             a {
                 @include flex-all($justify: center, $align: center);
-                width: 186px;
+                width: 100%;
                 height: 100%;
                 color: $color-over-secondary;
                 background-color: $secondary-color;
@@ -41,11 +44,17 @@
         }
     }
 
-    @include respond-to($vp-large) {
+    @include respond-to($vp-max) {
         justify-content: flex-end; 
 
         .menu-item {
-            &:last-child { padding-right: 0; }
+            flex: none;
+            padding: 0 1rem;
+
+            &:last-child { 
+                width: 186px;
+                padding-right: 0; 
+            }
         }
     }
 }
@@ -53,10 +62,6 @@
 .header-primary-menu,
 .header-secondary-menu {
     @include stripped-list; 
-}
-
-.header-primary-menu {
-    @include flex-all($justify: center);
 
     .menu-item {
         a {
@@ -76,26 +81,59 @@
             @include hover-color($secondary-color);
         }
     }
+}
 
-    @include respond-to($vp-large) {
+.header-primary-menu {
+    @include flex-all(column, center);
+
+    @include respond-to($vp-mid) {
+        flex-direction: row;
         justify-content: flex-end;
 
         .menu-item {
             @include flex-all($align: center);
-            height: 100px;
+            height: 50px;
         }
+    }
+
+    @include respond-to($vp-max) {
+        .menu-item { height: 100px; }
     }
 }
 
-.header-secondary-menu-wrapper {
-    .menu-toggle { 
-        cursor: pointer; 
+.header-secondary-menu { 
+    @include respond-to($vp-mid) { display: none; }
+}
 
-        svg { 
-            fill: $color-over-primary;
+.menu-toggle { 
+    position: absolute;
+    z-index: 999;
+    top: 5px;
+    right: 0;
+    cursor: pointer; 
 
-            path  { transition: all .5s; }
-        }
+    svg { 
+        width: 41px;
+        height: 26px;
+        fill: $primary-color;
+
+        path  { transition: all .5s; }
+    }
+        
+    #bar1 { transform: translateX(-8px); }
+    #bar2 { transform: translateX(8px); }
+
+    @include respond-to($vp-mid) {
+        order: 2;
+        display: block;
+        position: relative;
+        top: 0;
+        right: 0;
+
+        svg { fill: $color-over-primary; }
+        
+        #bar1 { transform: translateX(0); }
+        #bar2 { transform: translateX(0); }
 
         @include hover {
             #bar1 { transform: translateX(-16px); }
@@ -104,33 +142,38 @@
     }
 }
 
-.header-secondary-menu { display: none; }
-
 .footer-primary-menu-wrapper,
 .footer-secondary-menu-wrapper { 
+    margin: 2rem 0;
+    text-align: center;
 
-    .items-list li { 
-        display: block;
-
-        a { 
+    .items-list {
+        li { 
             display: block;
-            margin: 10px 0;
-            font-weight: 300;
-            text: {
-                transform: uppercase;
-                decoration: none;
+
+            a { 
+                display: block;
+                margin: 10px 0;
+                font-weight: 300;
+                text: {
+                    transform: uppercase;
+                    decoration: none;
+                }
+                color: $color-over-primary;
+                letter-spacing: 12.3px; 
+        
+                @include hover-color($secondary-color);
             }
-            color: $color-over-primary;
-            letter-spacing: 12.3px; 
-    
-            @include hover-color($secondary-color);
         }
     }
+
+    @include respond-to($vp-large) { margin: 0; }
 }
 
 .footer-primary-menu-wrapper { 
     @include respond-to($vp-large) {
         order: 1; 
+        text-align: left; 
 
         a {
             &:after {
@@ -144,7 +187,7 @@
 .footer-secondary-menu-wrapper { 
     @include respond-to($vp-large) { 
         order: 3; 
-        text-align: right;
+        text-align: right; 
 
         a {
             &:before {

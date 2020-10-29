@@ -1,7 +1,6 @@
 .content-cards {
     position: relative;
     overflow: hidden;
-    padding-bottom: 11rem;
 
     &:after, &:before {
         content: '';
@@ -24,15 +23,18 @@
         border-left: 1000px solid transparent;
         border-right: 1000px solid;
     }
-    
-    .cards { padding-top: 12%; }
 
-    .items-list { margin-bottom: 90px; }
+    .items-list { 
+        margin-bottom: 90px; 
+        padding: 0 .5rem;
+    }
 
     .item {
+        flex: 1;
         display: block;
-        width: 300px;
+        width: 100%;
         height: 300px;
+        margin: .5rem 0;
         color: $c-white;
         @include bg-cover;
 
@@ -58,7 +60,7 @@
     .item-inner { 
         @include flex-all(column, space-between);
         position: relative; 
-        padding: 5%;
+        padding: 15% 5% 5%;
         height: 100%;
         font-family: $secondary-font;
         transition: padding .5s;
@@ -75,7 +77,7 @@
 
     .type {
         font-size: 1.125rem;
-        letter-spacing: 17.51px;
+        letter-spacing: .5rem;
     }
 
     .action-plus {
@@ -93,12 +95,8 @@
     }
 
     .card-panel {
-        @include flex-all(column, center, center);
+        display: none; 
         text-align: center;
-
-        &[hidden]{ 
-            display: none; 
-        }
 
         .name { line-height: 1; }
         
@@ -131,28 +129,53 @@
         .action-links-group { @include flex-all($justify: center); }
     }
     
-    @include respond-to($vp-mid) {
+    @include respond-to($vp-mid) {    
         .items-list {
             @include flex-all($align: center);
-            height: 600px;
+            padding: .5rem .25rem;
         }
 
         .item { 
-            width: 407px;
-            height: 513px;
-            background-color: tan;
+            margin: 0 .25rem;
             transition: all .5s ;
+        }
 
-            &[aria-selected="true"] {
-                position: relative;
-                z-index: 2;
-                width: 29vw;
-                height: 600px;
+        .item-inner { padding: 5%; }
+    }
+
+    @include respond-to($vp-large) {
+        padding: .5rem 0 11rem;
+
+        .cards { @include width-constrain; }
+
+        .items-list { padding: 0; }
+
+        .type { letter-spacing: 1.125rem; }
+
+        .card-panel {
+            @include flex-all(column, center, center);
+    
+            &[hidden]{ 
+                display: none; 
             }
         }
     }
 
-    @include respond-to($vp-large) {
-        .cards { @include width-constrain; }
+    @include respond-to($vp-max) {
+        padding: 12% 0 11rem;
+
+        .items-list { height: 600px; }
+
+        .item {
+            flex: none;
+            width: 407px;
+            height: 513px;
+            margin: 0;
+
+            &[aria-selected="true"] {
+                width: 29vw;
+                height: 600px;
+            }
+        }
     }
 }

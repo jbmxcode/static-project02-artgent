@@ -1,13 +1,11 @@
 .site-footer {
-    background: {
-        color: $c-grey-light;
-        image: url(../images/wave-footer.png);
-    }
-    @include bg-cover;
+    padding: 3rem 1rem;
+    background-color: $primary-color;
     
     &__title {
         display: block;
         margin: 0;
+        text-align: center;
 
         a {
             text: {
@@ -30,8 +28,14 @@
 
     @include respond-to($vp-large) {
         @include flex-all(column, flex-end);
-        margin-top: -6rem;
         min-height: 530px;
+        margin-top: -6rem;
+        padding: { top: 0; bottom: 0; }
+        background: {
+            color: $c-grey-light;
+            image: url(../images/wave-footer.png);
+        }
+        @include bg-cover;
 
         .content-row { @include width-constrain; }
 

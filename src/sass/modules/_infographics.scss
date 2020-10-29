@@ -17,10 +17,10 @@
     .info-text {
         @include scale-font($small-ratio: .5, $final-size: 1.625rem);
         position: relative;
-        left: 20px;
+        margin-left: 1rem;
         font-weight: 300;
         text-transform: uppercase;
-        letter-spacing: 20px;
+        letter-spacing: 1rem;
         line-height: 1;
     }
 
@@ -28,5 +28,10 @@
         .content-inner { @include width-constrain; }
 
         .items-list { justify-content: space-between; }
+
+        .info-text { 
+            margin-left: 1.25rem;
+            letter-spacing: 1.25rem; 
+        }
     }
 }

@@ -12,7 +12,9 @@
 
     &__title {
         display: block;
-        margin: 0;
+        margin: 0 auto;
+        padding: 1rem 0;
+        background-color: $c-white;
 
         a {
             text: {
@@ -20,6 +22,10 @@
                 decoration: none;
             }
             color: $c-text;
+
+            img { width: 240px; }
+
+            > * { text-align: center; }
         }
 
         .second-line {
@@ -33,9 +39,25 @@
 
     &__topbar { background-color: $c-white; }
 
-    &__navigation { @include flex-all($justify: center, $align: center); }
+    &__navigation { 
+        @include flex-all($justify: center, $align: center);
+        overflow: hidden;
+        height: 0;
+        visibility: hidden;
+        transition: all .5s;
+    }
 
-    @include respond-to($vp-large) {        
+    @include respond-to($vp-mid) { 
+        &__title a img { width: 247px; }
+
+        &__navigation {
+            height: auto;
+            margin: 0 auto;
+            visibility: visible;
+        }
+    }
+
+    @include respond-to($vp-max) { 
         .content-column {
             &:first-child {
                 > * { flex: 1; }
@@ -52,19 +74,26 @@
             left: 0;
             width: 454px;
             height: 202px;
-            background-image: url(../images/wave_logo.png);
+            margin: 0;
+            padding: 0;
+            background: {
+                color: transparent;
+                image: url(../images/wave_logo.png);
+            }
             @include bg-cover;
 
             a { 
                 position: relative;
                 top: -20px;
                 margin-left: 75px; 
+
+                img { width: 247px; }
             }
         }
 
-        &__navigation {
-            margin-right: 75px;
-            justify-content: flex-end;
+        &__navigation { 
+            justify-content: flex-end; 
+            width: calc(100% - 150px);
         }
     }
 }
