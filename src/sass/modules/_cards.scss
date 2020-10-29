@@ -146,8 +146,6 @@
     @include respond-to($vp-large) {
         padding: .5rem 0 11rem;
 
-        .cards { @include width-constrain; }
-
         .items-list { padding: 0; }
 
         .type { letter-spacing: 1.125rem; }
@@ -164,16 +162,18 @@
     @include respond-to($vp-max) {
         padding: 12% 0 11rem;
 
+        .cards { @include width-constrain; }
+
         .items-list { height: 600px; }
 
         .item {
             flex: none;
-            width: 407px;
+            width: 405px;
             height: 513px;
             margin: 0;
 
             &[aria-selected="true"] {
-                width: 29vw;
+                width: 556px;
                 height: 600px;
             }
         }
