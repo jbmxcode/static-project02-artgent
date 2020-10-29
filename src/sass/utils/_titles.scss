@@ -1,0 +1,32 @@
+.title {
+    margin: 0;
+    padding-bottom: 2rem;
+    
+    &-section {
+        @include scale-font($small-ratio: .5, $final-size: 1.875rem);
+        font-weight: 300;
+        text: {
+            align: center;
+            transform: uppercase;
+        }
+        letter-spacing: 5.7px;
+
+        span { color: $primary-color; }
+    }
+
+    &-secondary {
+        @include scale-font($small-ratio: .5, $final-size: 3rem); 
+        font-family: $secondary-font;
+        text-transform: uppercase;
+    }
+
+    &-tertiary {
+        font: {
+            size: 1.313rem;
+            family: $secondary-font;
+            weight: 400;
+        }
+        text-transform: uppercase;
+        letter-spacing: 8.99px;
+    }
+}

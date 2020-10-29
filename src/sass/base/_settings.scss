@@ -1,0 +1,87 @@
+// Responsive
+
+$vp-small				: 320px;	// small size 
+$vp-mid					: 768px;	// mid size
+$vp-large				: 1024px;	// large size
+
+$vp-max					: 1350px;	// max viewport
+
+$site-width				: $vp-max;
+
+// Logos Sizes
+
+$header-logo-height		: 150px;
+$header-logo-width		: 150px;
+$footer-logo-height		: 173px;
+$footer-logo-width		: 523px;
+
+// Colors
+
+$c-white                : rgb(255,255,255);
+$c-black                : rgb(0,0,0);
+$c-grey                 : rgb(62, 62, 62);
+$c-grey-light           : rgb(248, 248, 248);
+$c-text                 : rgb(23, 23, 23);
+
+$primary-color			: rgb(64, 32, 197);
+$color-over-primary		: $c-white;
+
+$secondary-color		: rgb(255, 170, 0);
+$color-over-secondary	: $c-black;
+
+$tertiary-color		    : rgb(32, 197, 131);
+$color-over-tertiary	: $c-white;
+
+$fourth-color		    : rgb(32, 131, 197);
+$color-over-fourth	    : $c-white;
+
+$fifth-color		    : rgb(23, 23, 23);
+$color-over-fifth	    : $c-white;
+
+// Social Colors
+
+$facebook				: rgb(24,119,242);
+$twitter				: rgb(29,161,242);
+$youtube				: rgb(255,0,0);
+$instagram				: rgb(215,53,118);
+
+// Logos Images
+
+$header-logo-image			: "images/header_logo.svg";
+$footer-logo-image			: $header-logo-image;
+
+
+// Fonts
+
+@font-face {
+    font-family: 'good-brush';
+    src: url('../fonts/GOODBRUSH.eot');
+    src: url('../fonts/GOODBRUSH.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/GOODBRUSH.woff2') format('woff2'),
+        url('../fonts/GOODBRUSH.woff') format('woff'),
+        url('../fonts/GOODBRUSH.ttf') format('truetype'),
+        url('../fonts/GOODBRUSH.svg#GOODBRUSH') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas-Neue';
+    src: url('../fonts/BebasNeue-Regular.eot');
+    src: url('../fonts/BebasNeue-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BebasNeue-Regular.woff2') format('woff2'),
+        url('../fonts/BebasNeue-Regular.woff') format('woff'),
+        url('../fonts/BebasNeue-Regular.ttf') format('truetype'),
+        url('../fonts/BebasNeue-Regular.svg#BebasNeue-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+$primary-font			    : 'Oswald', sans-serif;
+$secondary-font             : Bebas-Neue, sans-serif;
+$tertiary-font              : good-brush, sans-serif;
+
+$base-font-size			    : 16px;
+

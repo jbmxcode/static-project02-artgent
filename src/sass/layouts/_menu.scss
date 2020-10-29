@@ -1,0 +1,179 @@
+.topbar-menu {
+    @include flex-all($justify: center);
+    @include stripped-list;
+
+    .menu-item {
+        @include flex-all($align: center);
+        height: 50px;
+        padding: 0 1rem;
+
+        a {
+            font: {
+                size: .875rem;
+                weight: 300;
+            }
+            text: {
+                transform: uppercase;
+                decoration: none;
+            }
+            letter-spacing: 1.75px;
+            color: $c-text;
+
+            svg { margin-right: 5px; }
+
+            @include underline-from-left($border-size: 1px, $border-color: $c-black);
+        }
+
+        &:last-child {
+            a {
+                @include flex-all($justify: center, $align: center);
+                width: 186px;
+                height: 100%;
+                color: $color-over-secondary;
+                background-color: $secondary-color;
+
+                &:before { content: none; }
+
+                @include hover-bg-color($primary-color, $color-over-primary) {
+                    svg { fill: $color-over-primary; }
+                }
+            }
+        }
+    }
+
+    @include respond-to($vp-large) {
+        justify-content: flex-end; 
+
+        .menu-item {
+            &:last-child { padding-right: 0; }
+        }
+    }
+}
+
+.header-primary-menu,
+.header-secondary-menu {
+    @include stripped-list; 
+}
+
+.header-primary-menu {
+    @include flex-all($justify: center);
+
+    .menu-item {
+        a {
+            margin: 0 1rem;
+            font: {
+                size: 1.25rem;
+                weight: 400;
+            }
+            text: {
+                transform: uppercase;
+                decoration: none;
+            }
+            letter-spacing: 2.5px;
+            color: $color-over-primary;
+
+            @include underline-from-left($border-size: 1px, $border-color: $secondary-color);
+            @include hover-color($secondary-color);
+        }
+    }
+
+    @include respond-to($vp-large) {
+        justify-content: flex-end;
+
+        .menu-item {
+            @include flex-all($align: center);
+            height: 100px;
+        }
+    }
+}
+
+.header-secondary-menu-wrapper {
+    .menu-toggle { 
+        cursor: pointer; 
+
+        svg { 
+            fill: $color-over-primary;
+
+            path  { transition: all .5s; }
+        }
+
+        @include hover {
+            #bar1 { transform: translateX(-16px); }
+            #bar2 { transform: translateX(16px); }
+        }
+    }
+}
+
+.header-secondary-menu { display: none; }
+
+.footer-primary-menu-wrapper,
+.footer-secondary-menu-wrapper { 
+
+    .items-list li { 
+        display: block;
+
+        a { 
+            display: block;
+            margin: 10px 0;
+            font-weight: 300;
+            text: {
+                transform: uppercase;
+                decoration: none;
+            }
+            color: $color-over-primary;
+            letter-spacing: 12.3px; 
+    
+            @include hover-color($secondary-color);
+        }
+    }
+}
+
+.footer-primary-menu-wrapper { 
+    @include respond-to($vp-large) {
+        order: 1; 
+
+        a {
+            &:after {
+                content: "+";
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+.footer-secondary-menu-wrapper { 
+    @include respond-to($vp-large) { 
+        order: 3; 
+        text-align: right;
+
+        a {
+            &:before {
+                content: "+";
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.footer-social-links-wrapper {
+    margin-bottom: 1rem;
+
+    .items-list { @include flex-all($justify: center, $wrap: wrap); }
+    
+    .menu-item { 
+        margin: 0 1rem; 
+
+        a {
+            @include hover {
+                svg { fill: $color-over-primary; }
+            }
+        }
+    }
+
+    svg {
+        width: 24px;
+        height: 24px;
+        fill: $secondary-color;
+        transition: fill .5s;
+    }
+}

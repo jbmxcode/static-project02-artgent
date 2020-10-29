@@ -1,0 +1,70 @@
+.site-header {
+    position: relative;
+    background-color: $primary-color;
+        
+    .content {
+        &-row { @include flex-all(column); }
+
+        &-column {
+            &:last-child { order: 1; }
+        }
+    }
+
+    &__title {
+        display: block;
+        margin: 0;
+
+        a {
+            text: {
+                transform: uppercase;
+                decoration: none;
+            }
+            color: $c-text;
+        }
+
+        .second-line {
+            font: {
+                size: .75rem;
+                weight: 300;
+            }
+            letter-spacing: 5.14px;
+        }
+    }
+
+    &__topbar { background-color: $c-white; }
+
+    &__navigation { @include flex-all($justify: center, $align: center); }
+
+    @include respond-to($vp-large) {        
+        .content-column {
+            &:first-child {
+                > * { flex: 1; }
+            }
+
+            &:last-child { order: -1; }
+        }
+
+        &__title {
+            @include flex-all($align: center);
+            position: absolute;
+            z-index: 99;
+            top: 0;
+            left: 0;
+            width: 454px;
+            height: 202px;
+            background-image: url(../images/wave_logo.png);
+            @include bg-cover;
+
+            a { 
+                position: relative;
+                top: -20px;
+                margin-left: 75px; 
+            }
+        }
+
+        &__navigation {
+            margin-right: 75px;
+            justify-content: flex-end;
+        }
+    }
+}

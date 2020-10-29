@@ -1,0 +1,101 @@
+.content-hero {
+    background-color: $primary-color;
+
+    .hero {
+        position: relative;
+        width: calc(100% - 150px);
+        height: 780px;
+        margin: 0 auto;
+
+        &__image {
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                mix-blend-mode: luminosity;
+            }
+
+            &-caption {
+                @include flex-all($justify: flex-end, $align: center);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(../images/hero-caption-filter.png);
+                    mix-blend-mode: hard-light;                    
+                    @include bg-cover;
+                }
+
+                .item {
+                    &-summary {
+                        position: relative;
+                        z-index: 2;
+                        padding-right: 2rem;
+                    }
+
+                    &-text {
+                        @include flex-all($direction: column, $align: flex-end);
+                        font: {
+                            size: 1rem;
+                            family: $secondary-font;
+                        }
+                        text-align: right;
+
+                        span {
+                            display: block;
+                            margin: .5rem 0;
+                            line-height: .75;
+                            
+                            &:nth-of-type(1) {
+                                position: relative;
+                                left: 55px;
+                                font-size: 3.313em;
+                                letter-spacing: 63.28px;
+                            }
+                            
+                            &:nth-of-type(2) {
+                                font-size: 8.25em;
+                            }
+                            
+                            &:nth-of-type(3) {
+                                margin-bottom: 0;
+                                font-size: 16.375em;
+                            }
+                            
+                            &:nth-of-type(4) {
+                                font: {
+                                    size: 1.25rem;
+                                    family: $primary-font;
+                                    weight: 300;
+                                }
+                                letter-spacing: .27rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include respond-to($vp-mid) {
+        .action-links-group {
+            position: absolute;
+            z-index: 9;
+            top: calc(100% - 25px);
+            right: 2rem;
+        }
+    }
+}

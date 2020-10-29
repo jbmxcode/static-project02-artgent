@@ -1,0 +1,63 @@
+.content-spotlights {
+    padding-top: 25px;
+
+    @include mask-fullsize {
+        z-index: -1;
+        height: 355px;
+        background-image: url(../images/wave-spotlights.png);
+        @include bg-cover;
+    }
+
+    .items-list { @include flex-all($wrap: wrap); }
+
+    .item {
+        color: $color-over-primary;
+
+        svg {
+            width: 60px;
+            height: 32px;
+            margin-right: .5rem;
+            fill: $secondary-color;
+        }
+    }
+
+    .item-inner { @include flex-all($align: center); }
+
+    .item-text {
+        font: {
+            size: 1.188rem;
+            family: $tertiary-font;
+        }
+        letter-spacing: 2.53px;
+
+        p { margin: 0; }
+    }
+
+    @include respond-to($vp-large) {
+        .content-inner {
+            width: calc(100% - 150px);
+            margin: 0 auto;
+        }
+
+        .item {
+            margin-right: 45px;
+            padding-right: 45px;
+            
+            @include mask {
+                top: 50%;
+                right: -1px;
+                width: 1px;
+                height: 26px;
+                background-color: rgba($color-over-primary, .28);
+                transform: translateY(-50%);
+            }
+
+            &:last-child {
+                margin-right: 0;
+                padding-right: 0;
+
+                &:before { content: none; }
+            }
+        }
+    }
+}

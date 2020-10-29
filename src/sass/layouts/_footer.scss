@@ -1,0 +1,47 @@
+.site-footer {
+    background: {
+        color: $c-grey-light;
+        image: url(../images/wave-footer.png);
+    }
+    @include bg-cover;
+    
+    &__title {
+        display: block;
+        margin: 0;
+
+        a {
+            text: {
+                transform: uppercase;
+                decoration: none;
+            }
+            color: $color-over-primary;
+        }
+
+        .second-line {
+            font: {
+                size: .75rem;
+                weight: 300;
+            }
+            letter-spacing: 5.14px;
+        }
+    }
+
+    .title-tertiary { color: $color-over-primary; }
+
+    @include respond-to($vp-large) {
+        @include flex-all(column, flex-end);
+        margin-top: -6rem;
+        min-height: 530px;
+
+        .content-row { @include width-constrain; }
+
+        &__top {
+            .content-column { @include flex-all($justify: space-between); }
+        }
+
+        &__title { 
+            align-self: center;
+            order: 2; 
+        }
+    }
+}
